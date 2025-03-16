@@ -1,4 +1,5 @@
 // TODO Implement this library.
+import 'package:e_commerce_flutter/screens/home/page/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 
@@ -6,7 +7,6 @@ import '../../../common/widgets/app_bar.dart';
 import 'widget/bottom_nav_bar.dart';
 
 class Home extends StatefulWidget {
-  
   const Home({super.key});
 
   @override
@@ -15,7 +15,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
-  final List<Widget> _homeScreens =[
+  final List<Widget> _homeScreens = [
+    HomeScreen(),
     Container(
       height: double.infinity,
       color: Colors.amber,
@@ -32,13 +33,13 @@ class _HomeState extends State<Home> {
       height: double.infinity,
       color: Colors.lightBlue,
     ),
-
   ];
   void _onTapMethod(int index) {
     setState(() {
       _currentIndex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,11 +54,10 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: _homeScreens[_currentIndex],
-      bottomNavigationBar: 
-      FBottomBar(
-        ontapMethod: _onTapMethod, 
+      bottomNavigationBar: FBottomBar(
+        ontapMethod: _onTapMethod,
         currentIndex: _currentIndex,
-        ),
+      ),
     );
   }
 }
